@@ -478,7 +478,7 @@ Implement a function that returns the last digit of a given number.
   whether it works for you!
 -}
 lastDigit :: Int -> Int
-lastDigit n = mod (abs(n)) 10
+lastDigit n = mod (abs n) 10
 
 
 {- |

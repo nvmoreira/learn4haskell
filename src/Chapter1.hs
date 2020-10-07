@@ -509,7 +509,7 @@ branches because it is an expression and it must always return some value.
 -}
 closestToZero :: Int -> Int -> Int
 closestToZero x y =
-    if abs(x) < abs(y) then x else y
+    if abs x < abs y then x else y
 
 {- |
 =⚔️= Task 7
@@ -543,17 +543,14 @@ Casual reminder about adding top-level type signatures for all functions :)
 -}
 mid :: Int -> Int -> Int -> Int
 mid x y z
-    | (y < x) && (x < z) = x
+    | (y <= x) && (x < z) = x
     | (x < y) && (y < z) = y
     | (x < z) && (z < y) = z
-    | (z < x) && (x < y) = x
-    | (z < y) && (y < x) = y
+    | (z <= x) && (x < y) = x
+    | (z <= y) && (y < x) = y
     | (y < z) && (z < x) = z
-    | (x == y) && (x < z) = x
     | (x == y) && (z < x) = z
-    | (x == z) && (x < y) = x
     | (x == z) && (y < z) = y
-    | (y == z) && (y < x) = y
     | (y == z) && (x < y) = x
     | otherwise = x
 
@@ -570,9 +567,7 @@ True
 False
 -}
 isVowel :: Char -> Bool
-isVowel c
-    | c `elem` "aeiou" = True
-    |otherwise = False
+isVowel c = c `elem` "aeiou"
 
 {- |
 == Local variables and functions
@@ -636,9 +631,8 @@ specifying complex expressions.
 -}
 sumLast2 :: Int -> Int
 sumLast2 n =
-    let lastNum = mod (abs(n)) 10
-        secLastNum = div (mod (abs(n)) 100) 10
-    in lastNum + secLastNum
+    let secLastNum = div (mod (abs n ) 100) 10
+    in lastDigit n + secLastNum
 
 {- |
 =💣= Task 10*
